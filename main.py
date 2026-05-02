@@ -2,6 +2,7 @@ import os
 from datasets import load_dataset
 
 from api import DeepSeekAPI
+from util import add_tsa_columns
 
 DATA_DIR = "./data"
 TRAIN_DIR = os.path.join(DATA_DIR, "train.csv")
@@ -35,10 +36,10 @@ def main():
     dataset = load_dataset("csv", data_files=TRAIN_DIR, split="train")
     dataset = dataset.rename_columns(LABEL_MAP)
     # print(dataset.column_names)
-    print(dataset[1])
-
-    # api = DeepSeekAPI()
-    # print(api.generate_reason())
+    dataset = dataset.remove_columns(["id", "评级"])
+    sample = dataset.select(range(1))
+    sample = sample.map(add_tsa_columns, load_from_cache_file=False)
+    print(sample[0])
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,3 @@
+dir:
+  prompt:
+    tsa-gen: "./tsa_gen_sys.md"
