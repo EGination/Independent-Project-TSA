@@ -7,9 +7,9 @@ from util import load_from_checkpoint, add_tsa_columns
 
 DATA_DIR = "./data"
 TRAIN_DIR = os.path.join(DATA_DIR, "train.csv")
-CKPT_DIR = "./out/tsa_checkpoint"
+CKPT_DIR = "./debug/tsa_checkpoint_debug"
 CURR_BATCH = 2
-BATCH_SIZE = 100
+BATCH_SIZE = 2
 
 LABEL_MAP = {
     'id': 'id',
@@ -48,10 +48,10 @@ def main():
 
     checkpoint = load_from_checkpoint(CKPT_DIR, ref_dataset=batch)
     checkpoint = concatenate_datasets([checkpoint, batch])
-    # print(checkpoint[0], checkpoint[10])
-    checkpoint.save_to_disk(CKPT_DIR + '_tmp')
-    shutil.rmtree(CKPT_DIR, ignore_errors=True)
-    os.rename(CKPT_DIR + '_tmp', CKPT_DIR)
+    print(checkpoint[0], checkpoint[1])
+    # checkpoint.save_to_disk(CKPT_DIR + '_tmp')
+    # shutil.rmtree(CKPT_DIR, ignore_errors=True)
+    # os.rename(CKPT_DIR + '_tmp', CKPT_DIR)
 
     print(f"Batch {CURR_BATCH} completed. The current length of checkpoint is {len(checkpoint)}.")
 

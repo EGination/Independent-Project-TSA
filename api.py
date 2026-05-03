@@ -35,4 +35,9 @@ class DeepSeekAPI:
                 'type': 'json_object'
             },
         )
-        return json.loads(response.choices[0].message.content)
+        try:
+            result = json.loads(response.choices[0].message.content)
+            return result
+        except:
+            print("Abnormal response occured. Setting '目标数量' to -1.")
+            return None

@@ -23,21 +23,27 @@ def load_from_checkpoint(ckpt_path: str, ref_dataset=None):
 	return dataset
 
 def add_tsa_columns(example: dict):
-    comment = example["评论"]
+	comment = example["评论"]
+	result = api.generate_tsa(comment)
 
-    result = api.generate_tsa(comment)
-    target_list = result.get("目标列表", [])
+	if result is None:
+		example["目标"] = []
+		example["标签"] = []
+		example["理由"] = []
+		example["目标数量"] = -1
+		print(f"Relevant Comment: {comment[:18]}...")
 
-    targets = [e["目标"] for e in target_list]
-    labels = [e["情感"] for e in target_list]
-    reasons = [e["理由"] for e in target_list]
+		return example
+	else:
+		target_list = result.get("目标列表", [])
 
-    example["目标"] = targets
-    example["标签"] = labels
-    example["理由"] = reasons
-    example["目标数量"] = len(targets)
-    
-    return example
+		targets = [e["目标"] for e in target_list]
+		labels = [e["情感"] for e in target_list]
+		reasons = [e["理由"] for e in target_list]
 
-def batch_tsa():
-	pass
+		example["目标"] = targets
+		example["标签"] = labels
+		example["理由"] = reasons
+		example["目标数量"] = len(targets)
+
+		return example
