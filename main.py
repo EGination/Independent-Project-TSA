@@ -1,11 +1,15 @@
 import os
-from datasets import load_dataset
+import shutil
+from datasets import load_dataset, concatenate_datasets
 
 from api import DeepSeekAPI
-from util import add_tsa_columns
+from util import load_from_checkpoint, add_tsa_columns
 
 DATA_DIR = "./data"
 TRAIN_DIR = os.path.join(DATA_DIR, "train.csv")
+CKPT_DIR = "./out/tsa_checkpoint"
+CURR_BATCH = 1
+BATCH_SIZE = 10
 
 LABEL_MAP = {
     'id': 'id',
@@ -33,13 +37,24 @@ LABEL_MAP = {
 
 def main():
     print("Hello from workspace!")
+    
     dataset = load_dataset("csv", data_files=TRAIN_DIR, split="train")
     dataset = dataset.rename_columns(LABEL_MAP)
-    # print(dataset.column_names)
     dataset = dataset.remove_columns(["id", "评级"])
-    sample = dataset.select(range(1))
-    sample = sample.map(add_tsa_columns, load_from_cache_file=False)
-    print(sample[0])
+
+    s, t = CURR_BATCH * BATCH_SIZE, (CURR_BATCH + 1) * BATCH_SIZE 
+    batch = dataset.select(range(s, t))
+    # batch = batch.map(add_tsa_columns, load_from_cache_file=False)
+    # batch.save_to_disk(CKPT_DIR)
+
+    checkpoint = load_from_checkpoint(CKPT_DIR, ref_dataset=batch)
+    # checkpoint = concatenate_datasets([checkpoint, batch])
+    print(checkpoint[1], checkpoint[11])
+    # checkpoint.save_to_disk(CKPT_DIR + '_tmp')
+    # shutil.rmtree(CKPT_DIR, ignore_errors=True)
+    # os.rename(CKPT_DIR + '_tmp', CKPT_DIR)
+
+    print(f"Batch {CURR_BATCH} completed. The current length of checkpoint is {len(checkpoint)}.")
 
 if __name__ == "__main__":
     main()

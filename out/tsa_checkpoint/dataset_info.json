@@ -1,0 +1,104 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "csv",
+  "dataset_size": 40462868,
+  "description": "",
+  "download_size": 36475033,
+  "features": {
+    "\u8bc4\u8bba": {
+      "dtype": "large_string",
+      "_type": "Value"
+    },
+    "\u4ea4\u901a\u65b9\u4fbf": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u4f4d\u4e8e\u5546\u5708\u9644\u8fd1": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u662f\u5426\u5bb9\u6613\u5bfb\u627e": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u6392\u961f\u65f6\u95f4": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u670d\u52a1\u4eba\u5458\u6001\u5ea6": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u505c\u8f66\u65b9\u4fbf": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u70b9\u83dc/\u4e0a\u83dc\u901f\u5ea6": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u4ef7\u683c": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u6027\u4ef7\u6bd4": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u6298\u6263\u529b\u5ea6": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u88c5\u4fee": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u5608\u6742\u60c5\u51b5": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u5c31\u9910\u7a7a\u95f4": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u536b\u751f\u60c5\u51b5": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u5206\u91cf": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u53e3\u5473": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u5916\u89c2": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u98df\u7269\u63a8\u8350\u7a0b\u5ea6": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 76937901,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 40462868,
+      "num_examples": 36850,
+      "dataset_name": "csv"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

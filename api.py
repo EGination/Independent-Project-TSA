@@ -36,7 +36,3 @@ class DeepSeekAPI:
             },
         )
         return json.loads(response.choices[0].message.content)
-
-if __name__ == "__main__":
-    api = DeepSeekAPI()
-    print(api.generate_tsa())
