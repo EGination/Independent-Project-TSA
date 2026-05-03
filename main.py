@@ -8,7 +8,7 @@ from util import load_from_checkpoint, add_tsa_columns
 DATA_DIR = "./data"
 TRAIN_DIR = os.path.join(DATA_DIR, "train.csv")
 CKPT_DIR = "./out/tsa_checkpoint"
-CURR_BATCH = 2
+CURR_BATCH = 4
 BATCH_SIZE = 100
 
 LABEL_MAP = {
