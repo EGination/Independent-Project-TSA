@@ -9,7 +9,7 @@ DATA_DIR = "./data"
 TRAIN_DIR = os.path.join(DATA_DIR, "train.csv")
 CKPT_DIR = "./out/tsa_checkpoint"
 CURR_BATCH = 1
-BATCH_SIZE = 10
+BATCH_SIZE = 100
 
 LABEL_MAP = {
     'id': 'id',
@@ -44,15 +44,14 @@ def main():
 
     s, t = CURR_BATCH * BATCH_SIZE, (CURR_BATCH + 1) * BATCH_SIZE 
     batch = dataset.select(range(s, t))
-    # batch = batch.map(add_tsa_columns, load_from_cache_file=False)
-    # batch.save_to_disk(CKPT_DIR)
+    batch = batch.map(add_tsa_columns, load_from_cache_file=False)
 
     checkpoint = load_from_checkpoint(CKPT_DIR, ref_dataset=batch)
-    # checkpoint = concatenate_datasets([checkpoint, batch])
-    print(checkpoint[1], checkpoint[11])
-    # checkpoint.save_to_disk(CKPT_DIR + '_tmp')
-    # shutil.rmtree(CKPT_DIR, ignore_errors=True)
-    # os.rename(CKPT_DIR + '_tmp', CKPT_DIR)
+    checkpoint = concatenate_datasets([checkpoint, batch])
+    # print(checkpoint[0], checkpoint[10])
+    checkpoint.save_to_disk(CKPT_DIR + '_tmp')
+    shutil.rmtree(CKPT_DIR, ignore_errors=True)
+    os.rename(CKPT_DIR + '_tmp', CKPT_DIR)
 
     print(f"Batch {CURR_BATCH} completed. The current length of checkpoint is {len(checkpoint)}.")
 

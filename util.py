@@ -3,7 +3,7 @@ import json
 from datasets import Dataset, load_from_disk
 
 from api import DeepSeekAPI
-os.environ['DEEPSEEK_API_KEY'] = 'abc123xyz'
+# os.environ['DEEPSEEK_API_KEY'] = 'abc123xyz'	# For testing purpose only
 
 
 api = DeepSeekAPI()

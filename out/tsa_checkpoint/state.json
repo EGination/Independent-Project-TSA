@@ -4,7 +4,7 @@
       "filename": "data-00000-of-00001.arrow"
     }
   ],
-  "_fingerprint": "a11e63dbe899690b",
+  "_fingerprint": "4173cc6ce5079352",
   "_format_columns": [
     "\u8bc4\u8bba",
     "\u4ea4\u901a\u65b9\u4fbf",
@@ -24,7 +24,11 @@
     "\u5206\u91cf",
     "\u53e3\u5473",
     "\u5916\u89c2",
-    "\u98df\u7269\u63a8\u8350\u7a0b\u5ea6"
+    "\u98df\u7269\u63a8\u8350\u7a0b\u5ea6",
+    "\u76ee\u6807",
+    "\u6807\u7b7e",
+    "\u7406\u7531",
+    "\u76ee\u6807\u6570\u91cf"
   ],
   "_format_kwargs": {},
   "_format_type": null,

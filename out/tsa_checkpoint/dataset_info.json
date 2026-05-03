@@ -82,6 +82,31 @@
     "\u98df\u7269\u63a8\u8350\u7a0b\u5ea6": {
       "dtype": "int64",
       "_type": "Value"
+    },
+    "\u76ee\u6807": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "\u6807\u7b7e": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "\u7406\u7531": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "\u76ee\u6807\u6570\u91cf": {
+      "dtype": "int64",
+      "_type": "Value"
     }
   },
   "homepage": "",
