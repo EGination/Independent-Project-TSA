@@ -35,15 +35,25 @@ def add_tsa_columns(example: dict):
 
 		return example
 	else:
-		target_list = result.get("目标列表", [])
+		try:
+			target_list = result.get("目标列表", [])
 
-		targets = [e["目标"] for e in target_list]
-		labels = [e["情感"] for e in target_list]
-		reasons = [e["理由"] for e in target_list]
+			targets = [e["目标"] for e in target_list]
+			labels = [e["情感"] for e in target_list]
+			reasons = [e["理由"] for e in target_list]
 
-		example["目标"] = targets
-		example["标签"] = labels
-		example["理由"] = reasons
-		example["目标数量"] = len(targets)
+			example["目标"] = targets
+			example["标签"] = labels
+			example["理由"] = reasons
+			example["目标数量"] = len(targets)
 
-		return example
+			return example
+		except:
+			print("Unformatted Reply detected.")
+			example["目标"] = []
+			example["标签"] = []
+			example["理由"] = []
+			example["目标数量"] = -1
+			print(f"Relevant Comment: {comment[:18]}...")
+
+			return example

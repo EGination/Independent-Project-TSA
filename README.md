@@ -1,34 +1,43 @@
-# ASAP-NAACL2021
+# Single-Pass TSA on Chinese Restaurant Reviews via Instruction-Tuned LLMs
 
+This repository contains the official implementation, data transformation pipelines, and evaluation scripts for the paper: **"Single-Pass Targeted Sentiment Analysis on Chinese Restaurant Reviews via Instruction-Tuned LLMs"**.
 
-## General Introduction
+We introduce a unified, single-pass inference framework utilizing instruction-tuned Large Language Models (LLMs) to simultaneously extract dynamic targets, sentiments, and supporting reasons from Chinese restaurant reviews in a structured format. To combat domain data scarcity and combinatorial overfitting, we develop a multi-dimensional data augmentation taxonomy covering contrastive, instruction, and task-level strategies.
 
-This repository contains the data of the [NAACL 2021](https://2021.naacl.org/)  paper: [ASAP: A Chinese Review Dataset Towards Aspect Category Sentiment Analysis and Rating](https://arxiv.org/abs/2103.06605)
+---
 
-**ASAP** is a large-scale Chinese restaurant review dataset for Aspect category Sentiment Analysis (ACSA) and review rating Prediction (RP).
+## Key Features
 
-ASAP includes 46, 730 genuine user reviews from the [Dianping](https://www.dianping.com/) App, a leading Online-to-Offline (O2O) e-commerce platform. Besides a 5-star scale rating, each review is manually annotated according to its sentiment polarities towards 18 pre-defined aspect categories, including food, service, enrionment and so on. We split the dataset into a training set (36,850), a validation set (4,940) and a test set (4,940) randomly.  
+- **Single-Pass Joint Extraction**: Extracts `(Target, Sentiment, Reason)` triplets simultaneously in a single forward pass, eliminating cascading errors common in traditional multi-stage pipelines.
+- **Multi-Dimensional Data Augmentation**: Includes structured task-level regularizations, negative contrastive sampling, and prompt diversification to harden model decision boundaries.
+- **Quantized LoRA Fine-Tuning**: Orchestrated with [Unsloth](https://github.com/unslothai/unsloth) to enable efficient 4-bit quantized training (`PEFT/LoRA`) on consumer-grade GPUs.
+- **Deterministic Structural Parsing**: A custom defensive JSON-parsing layer that gracefully intercepts truncated or partially malformed LLM outputs.
 
-## Data Example
+---
 
-![image](https://github.com/Meituan-Dianping/asap/blob/master/example_review.png)
+## Repository Structure
 
-## Read File
+Placeholder below, TBD
+```text
+├── data/
+│   ├── raw_asap/               # Original ASAP dataset files
+│   ├── transformed_6k.json    # Transformed dataset via DeepSeek API (6,200 samples)
+│   └── templates/             # Task templates (T1: Target, T2: Sentiment, T4: Contrastive)
+├── src/
+│   ├── augment.py             # Data augmentation taxonomy pipeline
+│   ├── train.py               # 4-bit LoRA training loop script (via Unsloth)
+│   ├── evaluate.py            # Strict verification and Joint F1 matching logic
+│   └── parser.py              # Defensive regular expression JSON parser
+├── configs/
+│   └── qwen_lora_config.json  # Hyperparameters for Qwen PEFT fine-tuning
+├── README.md
+└── requirements.txt
 
-  ```
-  import pandas as pd
-  
-  data = pd.read_csv(file_path, header=0)
-  ```
-## Data Label
+## Acknowledgement & Citation
 
-The sentiment polarity over the aspect category is labeled as 1(Positive), 0(Neutral), −1(Negative), −2(Not-Mentioned)
+This project is built upon the text corpora from the [ASAP dataset](https://github.com/Meituan-Dianping/asap), a benchmark for aspect-level sentiment analysis in Chinese restaurant reviews. We sincerely thank the original authors for their open-source contribution to the community. 
 
-The star rating ranges from 1 to 5.
-
-## Citation
-
-Please cite the following paper if you found it useful in your work.
+If you find this repository or our transformed dataset helpful, please consider citing the original ASAP paper as follows:
 
 ```
 @inproceedings{bu-etal-2021-asap,
@@ -49,12 +58,3 @@ Please cite the following paper if you found it useful in your work.
     pages = "2069--2079"
 }
 ```
-
-## Contact
-
-Jiahao Bu: bujh1994@gmail.com
-
-Lei Ren: renlei04@meituan.com
-
-Jingang Wang: wangjingang02@meituan.com
-

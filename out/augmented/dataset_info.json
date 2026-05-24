@@ -1,0 +1,54 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "\u8bc4\u8bba": {
+      "dtype": "large_string",
+      "_type": "Value"
+    },
+    "\u76ee\u6807": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "\u76ee\u6807\u6570\u91cf": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "\u4efb\u52a1": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "\u6807\u7b7e": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "\u7406\u7531": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "conversations": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

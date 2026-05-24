@@ -1,11 +1,6 @@
 {
-  "builder_name": "csv",
   "citation": "",
-  "config_name": "default",
-  "dataset_name": "csv",
-  "dataset_size": 40462868,
   "description": "",
-  "download_size": 36475033,
   "features": {
     "\u8bc4\u8bba": {
       "dtype": "large_string",
@@ -110,20 +105,5 @@
     }
   },
   "homepage": "",
-  "license": "",
-  "size_in_bytes": 76937901,
-  "splits": {
-    "train": {
-      "name": "train",
-      "num_bytes": 40462868,
-      "num_examples": 36850,
-      "dataset_name": "csv"
-    }
-  },
-  "version": {
-    "version_str": "0.0.0",
-    "major": 0,
-    "minor": 0,
-    "patch": 0
-  }
+  "license": ""
 }
